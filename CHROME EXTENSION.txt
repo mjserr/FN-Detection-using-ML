@@ -1,0 +1,4 @@
+import chrome extension using developers mode
+
+located in \templates\extension.html
+

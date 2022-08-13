@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Fake News Detection</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body >
+            <!-- Navigation-->
+            <nav class="navbar navbar-dark bg-dark static-top" >
+                <div class="container">
+                      <a class="navbar-brand" href="{{ url_for('index')}}"><img class="rounded" src="static/img/FNDlogo.png" alt="Brand" style="max-height: 80px; max-width: 60%; overflow: visible;" /></a>
+                      <div class="clickhead">
+                          <a class="navbar-brand" href="#howto">How to Use </a>
+                          <a class="navbar-brand" href="#what">Fact Checking</a>
+                          <a class="navbar-brand" href="#why">Importance</a>
+                          <a class="navbar-brand" href="#how">Protect Yourself</a>
+                          <a class="navbar-brand" href="#sources">Our Sources</a>
+                      </div>
+                </div>
+            </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="text-center text-white">
+                            <!-- Page heading-->
+                            <form action="{{ url_for('index')}}">
+                                <div class="row" style="border: 2px solid rgb(0, 128, 106);border-radius: 5px; background-color: #000000;">
+                                    <div class="col">
+                                        <h1 class="mb-5" style="color:rgb(40, 181, 146);">Results</h1>
+                                        <p style="font-style: italic;font-size: 200%;color:#ffffff;">" {{ usertxt }} "</p>
+                                        <p style="font-style: italic;font-size: 160%;color:#ffffff;">URL: "<a href="{{ userlink }}" target="_blank"  style="color:rgb(40, 181, 146);"> {{ userlink }}</a> "</p>
+                                        <p style="font-style: italic;font-size: 160%;color:#ffffff;">Tweet Author: " {{ usertxtauthor }} "</p>
+                                    </div>
+                                    <div class="results">
+                                        {% if prediction == ['FAKE']%}
+                                            <h2><img class="img-fluid rounded-circle mb-3" src="static/img/fake.png " width="60" height="90" alt="..."/></h2>
+                                            <h3 style="color:rgb(131, 0, 0);">Check your sources, Unverified or Possible Fake News</h2>
+                                        {% elif prediction == ['REAL']%}
+                                            <h2><img class="img-fluid rounded-circle mb-3" src="static/img/real.png" width="60" height="90" alt="..."/></h2>
+                                            <h3 style="color:#0cf847;">Verified and Truthful</h2>
+                                        {% elif prediction == ['TRY']%}       
+                                            <h2><img class="img-fluid rounded-circle mb-3" src="static/img/fake.png " width="60" height="90" alt="..."/></h2>
+                                        {% endif %}
+                                    </div>
+                                    &nbsp; 
+                                </div> 
+                                <div class="col-auto"><button class="btn btn-dark btn-lg " id="submitButton" type="submit">Detect Again</button></div>  
+                            </form>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Instructions-->
+        <div id="howto">
+            <section class="features-icons bg-light text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
+                                <h3>Copy The Text</h3>
+                                <p class="lead mb-0">Copy the tweet you want to fact check!</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
+                                <h3>Paste The Text</h3>
+                                <p class="lead mb-0">Paste the tweet in the area provided above!</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                                <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
+                                <h3>Check The Tweet</h3>
+                                <p class="lead mb-0">Ready to know the truth!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>    
+        <!-- Information-->
+            <section class="showcase">
+                <div class="container-fluid p-0">
+
+                <div id="what">
+                    <div class="row g-0">
+                        <div class="col-lg-6 order-lg-2 text-white showcase-img" ><blockquote class="twitter-tweet"><p lang="en" dir="ltr">More than 80 fact-checking organizations Wednesday urged online video platform YouTube to better combat disinformation, offering to help debunk false statements. <a href="https://t.co/z3AciW57Xo">https://t.co/z3AciW57Xo</a></p>&mdash; ABS-CBN News Channel (@ANCALERTS) <a href="https://twitter.com/ANCALERTS/status/1481164038977564672?ref_src=twsrc%5Etfw">January 12, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+                        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                            <h2>What is Fact Checking</h2>
+                            <p class="lead mb-0">The spread of misinformation is inherently human. Part of the approach of fact-checking is the awareness of the cognitive biases innate to each of us. While these biases help us navigate everyday life, they can cause us to overlook relevant facts, even when they are clearly presented.</p>
+                        </div>
+                    </div>
+                </div>  
+
+                <div id="why"> 
+                    <div class="row g-0">
+                        <div class="col-lg-6 text-white showcase-img"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sen. Manny Pacquiao appealed to the DILG, the PNP, the DoTr, and all local government units not to curtail the mobility of unvaccinated Filipinos so long as they observe the mandatory health and safety protocols.<br><br>READ: <a href="https://t.co/n0BtQhD1hC">https://t.co/n0BtQhD1hC</a> <a href="https://t.co/HcybXty3yH">pic.twitter.com/HcybXty3yH</a></p>&mdash; Inquirer (@inquirerdotnet) <a href="https://twitter.com/inquirerdotnet/status/1481151157980778498?ref_src=twsrc%5Etfw">January 12, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+                        <div class="col-lg-6 my-auto showcase-text">
+                            <h2>Why is Fact Checking Important</h2>
+                            <p class="lead mb-0">The network effect of social media has broadened the sources of information and thus the construction of our narratives. Social media has also removed a primary filter of journalists as the establishment of truth teller. Some politicians and opinion makers have seized upon this opportunity as an exercise of power. What is the relationship between facts and opinions? Opinions can be informed by facts, or by the purposeful denial of them if a group consensus compels one so. And nowadays, social media networks present a new and powerful tool to manipulate consent.</p>
+                        </div>
+                    </div>
+                </div>        
+
+                <div id="how"> 
+                    <div class="row g-0">
+                        <div class="col-lg-6 order-lg-2 text-white showcase-img"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Vice President Leni Robredo hits fake news regarding her office’s Bayanihan E-Konsulta initiative: Fake News at the height of the worst surge is unforgivable. | <a href="https://twitter.com/jvrmateo?ref_src=twsrc%5Etfw">@jvrmateo</a> <a href="https://t.co/oXrro6FyY0">pic.twitter.com/oXrro6FyY0</a></p>&mdash; The Philippine Star (@PhilippineStar) <a href="https://twitter.com/PhilippineStar/status/1480724052121886720?ref_src=twsrc%5Etfw">January 11, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+                        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                            <h2>How To Protect Yourself from Fake News</h2>
+                            <p class="lead mb-0">Accompanying the increasing amount of fake news and misinformation online, there are numerous platforms on the web for authentication, verification, or fact-checking the truthfulness of news stories. The systems themselves are very useful.</p>
+                        </div>
+                    </div>
+                </div>
+                    
+                </div>
+            </section>
+        <!-- tweetsources-->
+        <section id="sources" class="tweetsources text-center bg-light">
+            <div class="container">
+                <h2 class="mb-5">Our Tweets Sources</h2>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="tweetsources-item mx-auto mb-5 mb-lg-0">
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="static/img/tweetsources-1.jpg" alt="..." /> -->
+                            <a href="https://twitter.com/24OrasGMA?s=20" target="_blank"  style="color:#000000;text-decoration:none"><h5>@24OrasGMA</h5></a>
+                            <!-- <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="tweetsources-item mx-auto mb-5 mb-lg-0">
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="static/img/tweetsources-2.jpg" alt="..." /> -->
+                            <a href="https://twitter.com/ABSCBNNews?s=20" target="_blank"  style="color:#000000;text-decoration:none"><h5>@ABSCBNNews</h5></a>
+                            <!-- <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="tweetsources-item mx-auto mb-5 mb-lg-0">
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="static/img/tweetsources-3.jpg" alt="..." /> -->
+                            <a href="https://twitter.com/News5PH?s=20" target="_blank"  style="color:#000000;text-decoration:none"><h5>@News5PH</h5></a>
+                            <!-- <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="tweetsources-item mx-auto mb-5 mb-lg-0">
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="static/img/tweetsources-3.jpg" alt="..." /> -->
+                            <a href="https://twitter.com/PhilstarNews?s=20" target="_blank"  style="color:#000000;text-decoration:none"><h5>@PhilstarNewsA</h5></a>
+                            <!-- <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="tweetsources-item mx-auto mb-5 mb-lg-0">
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="static/img/tweetsources-3.jpg" alt="..." /> -->
+                            <a href="https://twitter.com/inquirerdotnet?s=20" target="_blank"  style="color:#000000;text-decoration:none"><h5>@inquirerdotnet</h5></a>
+                            <!-- <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="tweetsources-item mx-auto mb-5 mb-lg-0">
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="static/img/tweetsources-3.jpg" alt="..." /> -->
+                            <a href="https://twitter.com/manilabulletin?s=20" target="_blank"  style="color:#000000;text-decoration:none"><h5>@manilabulletin</h5></a>
+                            <!-- <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="tweetsources-item mx-auto mb-5 mb-lg-0">
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="static/img/tweetsources-3.jpg" alt="..." /> -->
+                            <a href="https://twitter.com/cnnphilippines?s=20" target="_blank"  style="color:#000000;text-decoration:none"><h5>@cnnphilippines</h5></a>
+                            <!-- <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="tweetsources-item mx-auto mb-5 mb-lg-0">
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="static/img/tweetsources-3.jpg" alt="..." /> -->
+                            <a href="https://twitter.com/CLTV36?s=20" target="_blank"  style="color:#000000;text-decoration:none"><h5>@CLTV36</h5></a>
+                            <!-- <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="tweetsources-item mx-auto mb-5 mb-lg-0">
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="static/img/tweetsources-3.jpg" alt="..." /> -->
+                            <h5>@And many more</h5>
+                            <!-- <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item"><a href="#!">About</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="#!">Contact</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+                        </ul>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; FakeNewsDetection 2021. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

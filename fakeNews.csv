@@ -1,0 +1,248 @@
+﻿title,text,label
+Unknown,Fake News,FAKE
+Unknown,This is a fake news,FAKE
+Unknown,a,FAKE
+Unknown,a,FAKE
+Unknown,b,FAKE
+Unknown,b,FAKE
+Unknown,bwakanang fake news,FAKE
+Unknown,tang ina fake news nanaman,FAKE
+Unknown,maayos system namin,FAKE
+Unknown,hindi maayos system,FAKE
+Unknown,a,FAKE
+,,
+Unknown,b,FAKE
+,,
+Unknown,c,FAKE
+,,
+Unknown,e,FAKE
+,,
+Unknown,qweqwe,FAKE
+,,
+Unknown,This is a fake news,FAKE
+,,
+Unknown,Fake News,FAKE
+,,
+Unknown,bwakanang fake news,FAKE
+,,
+Unknown,fake news,FAKE
+,,
+Unknown,maayos system namin,FAKE
+,,
+Unknown,this is not a fake news,FAKE
+,,
+Unknown,this is a fake newsss,FAKE
+,,
+Unknown,maayos systm namin,FAKE
+,,
+Unknown,this is fake,FAKE
+,,
+Unknown,"def predict():
+        if request.method == 'POST':
+            message = request.form['message'] 
+            message.encode('unicode_escape')
+            result_row= []
+            author = """"
+            msg = """"
+            pattern = r""http\S+""
+            tweetmsg = """"
+            nlink = """"
+            link = """"
+            if len(message.split())<2:
+                print(message)
+                print(""cannot predict"")
+                pred =['TRY']
+                print(pred) 
+                tweetmsg = ""Try again with more than 2 words""
+                author = ""Unknown""
+                link = ""Unknown""
+            else:
+                with open('finalDataset.csv', encoding='utf-8') as csv_file: #insert the csv
+                    csv_read = csv.reader(csv_file, delimiter=',')
+                    for row in csv_read:
+                        search_terms = [message]
+                        if any([term in row[1] for term in search_terms]): #row[2], index of selected column
+                            result_row.append(row)
+                    if len(result_row) == 1:
+                        print(result_row)
+                        author = result_row[0][0]
+                        msg = result_row[0][1]
+                        tweetmsg = re.sub(pattern, """", msg)
+                        nlink = listToString(Find(result_row[0][1]))
+                        link = nlink.replace(""["", """")
+                        pred = fake_news_det(message)
+                        if len(link)==0:
+                            link = ""None""
+                        else:
+                            link = link
+                        print(author)     
+                        print(tweetmsg)   
+                        print(link)      
+                    else:
+                        print(""This search is skipped because is has:"", len(result_row), ""values"") 
+                        pred = fake_news_det(message)
+                        tweetmsg = message
+                        author = ""Unknown""
+                        link = ""Unknown""
+                        print(author)
+                        print(tweetmsg)
+                        print(pred)
+                        print(link)  
+                        if pred != 'REAL':
+                            fake = [""Unknown"",  message, ""FAKE""]
+                            with open('fakeNews.csv', 'a') as fake_object:
+                                fakeData = writer(fake_object)
+                                fakeData.writerow(fake)
+                        else:
+                            pred =['FAKE']
+                            print(pred)                
+            return render_template('results.html', prediction=pred,usertxtauthor=author,usertxt=tweetmsg,userlink=link)
+        else:
+            return render_template('results.html', prediction=""Something went wrong"")",FAKE
+,,
+Unknown,qweqwe qweqweqw qweqwe,FAKE
+,,
+Unknown,qweqwe qweqwe qweqwe,FAKE
+,,
+Unknown,DPWH ready to give more funds to schools with in-person classes https://t.co/a6lt0vcHfF,FAKE
+,,
+Unknown,DPWH ready to give more funds to schools with in-person classes https://t.co/a6lt0vcHfF,FAKE
+,,
+Unknown,two words is,FAKE
+,,
+Unknown,twooo words,FAKE
+,,
+Unknown,reggienel patwaran,FAKE
+,,
+Unknown,"<div class=""col-auto""><button class=""btn btn-dark btn-lg "" id=""submitButton"" type=""submit"">Detect Again</button></div>",FAKE
+,,
+Unknown,Balikan sa  ang kuwento ng Pinay junior tennis star na si Alex Eala.,FAKE
+,,
+Unknown,"asdq sa ""Sports U"" ang kuwento ng Pinay junior tennis star na si Alex Eala.",FAKE
+,,
+Unknown,"Balikan sa ""Sports U"" ang kuwento ng Pinay junior tennis star na si Alex ada",FAKE
+,,
+Unknown,Kris Aquino is Dead,FAKE
+,,
+Unknown,Boy Abunda for President,FAKE
+,,
+Unknown,qweq qweq wqe1,FAKE
+,,
+Unknown,"Balikan sa ""Sports U"" ang kuwento ng Pinay junior tennis star na si Jonathan Vital",FAKE
+,,
+Unknown,"5 presidential bets sumalang sa forum; Marcos absent 
+#Halalan2022",FAKE
+,,
+Unknown,"5 presidential bets sumalang sa forum; Marcos absent 
+#Halalan2022",FAKE
+,,
+Unknown,5 presidential bets sumalang sa forum; Marcos absent #Halalan2022,FAKE
+,,
+Unknown,"The Manila mayor stresses the country's interests must always come first when signing deals with foreign investors. #KBPForum 
+#PanataSaBayan
+#TheFilipinoVotes Flag of Philippines  
+
+Read the story: https://bit.ly/3sgMvz5
+",FAKE
+,,
+Unknown,"Bonnici: We need ideas and collaboration but we also need decisions about future societies and systems to be inclusive of voices of people who don’t normally get a voice.
+",FAKE
+,,
+Unknown,"WE ARE NOW 1 MILLION STRONG ON TIKTOK! Flexed biceps
+
+Maraming salamat sa inyong suporta sa 24 Oras TikTok account, mga Kapuso! 
+
+Follow us: http://tiktok.com/@24oras",FAKE
+,,
+Unknown,"WE ARE NOW 1 MILLION STRONG ON TIKTOK! Flexed biceps
+
+Maraming salamat sa inyong suporta sa 24 Oras TikTok account, mga Kapuso! ",FAKE
+Unknown,F. Sionil Jose's Solidaridad book store to continue operations,FAKE
+,,
+Unknown,F. Sionil Jose's Solidaridad book store to continue operations,FAKE
+,,
+Unknown,F. Sionil Jose's Solidaridad book store to continue operations,FAKE
+,,
+Unknown,F. Sionil Jose's Solidaridad book store to continue operations,FAKE
+,,
+Unknown,F. Sionil Jose's Solidaridad book store to continue operations,FAKE
+,,
+Unknown,"The plane carrying the 1st batch of Pfizer vaccines for the PHs immunization of 5-11 y/o kids arrived at NAIA T3 at 9:30pm.
+
+The rollout for the age group supposed to begin today was moved to Feb 7 for NCR & nearby provinces after a delay in the vaxx arrival | 
+@anjo_bagaoisan",FAKE
+,,
+Unknown,"780,000 Pfizer vaccines, which the PH govt bought through World Bank, form the batch that arrived on Friday.
+
+Only Pfizer is currently approved for use by the PH FDA for 5-11 year olds. The dose for the age group is a different formulation from that given to older ages.",FAKE
+,,
+Unknown,"NTF COVID-19 chief implementer Sec. Carlito Galvez Jr & US Embassy charge daffaires Heather Variava lead the delegation that welcomed the arrival of the first batch of vaccines for 5-11 year olds | via 
+@anjo_bagaoisan
+",FAKE
+,,
+Unknown,"Representatives for Arena of Valor, FIFA Online 4, League of Legends (PC), and Crossfire have yet to be determined.",FAKE
+,,
+Unknown,"LOOK: Philippines' flag bearer Asa Miller leads the delegation as they enter the stadium during the opening ceremony of the Beijing 2022 Winter Olympic Games on Friday. (📷Jewel Samad, AFP)
+
+Related report: https://t.co/9R2PYPq40v https://t.co/WL6AIzLrE2",FAKE
+,,
+Unknown,"Chinese New Year na bukas! Naniniwala ba kayo sa suwerte? Iparinig ang #BosesMo at maaari itong ipalabas sa #24Oras!
+
+STITCH THIS VIDEO:  https://t.co/uDhcE4C1Ea https://t.co/cADG5oBdEl",FAKE
+,,
+Unknown,Bakit nga kaya? 🤔 #KuyaKimAnoNa https://t.co/Y8zl4eDbWI,FAKE
+Unknown,"Galvez says immunization of 5-11 year olds will proceed despite a court petition in Quezon City by 2 parents to stop the drive.
+
+May kumpiyansa kami na makikita ng ating judges yong magiging merit ng TRO, and we are confident that",FAKE
+,,
+Unknown,"Galvez: many people, many parents, & also overwhelmingly ang ating mamamayan susuportahan tayo dahil nakikita natin na malaki ang pakinabang ng bakuna dito sa pandemya. We cannot go out to the new normal w/o the vaccine. So nakikita namin we will proceed. | 
+@anjo_bagaoisan",FAKE
+,,
+Unknown,"WE ARE NOW 1 MILLION STRONG ON TIKTOK! Flexed biceps
+
+Maraming salamat sa inyong suporta sa 24 Oras TikTok account, mga Kapuso! 
+
+Follow us: http://tiktok.com/@24oras",FAKE
+,,
+Unknown,"Its confirmed: Barbie Imperial and Diego Loyzaga have broken up.
+",FAKE
+Unknown,"Will Leody De Guzman convince businessmen to vote for him? #Halalan2022
+",FAKE
+Unknown,"Olympics: With rings breaking from block of ice, Games ceremony begins",FAKE
+Unknown,"Olympics: With rings breaking from block of ice, Games ceremony begins
+",FAKE
+Unknown,"Olympics: With rings breaking from block of ice, Games ceremony begins
+",FAKE
+Unknown,"Olympics: With rings breaking from block of ice, Games ceremony begins",FAKE
+Unknown,"Michael Ver Comaling frustrated after task loss in �PBB�
+",FAKE
+Unknown,"Senate seeks raps vs Cusi, other DOE officials over Malampaya sale
+",FAKE
+Unknown,"Senate seeks raps vs Cusi, other DOE officials over Malampaya sale",FAKE
+Unknown,"Senate seeks raps vs Cusi, other DOE officials over Malampaya sale",FAKE
+Unknown,"'Grossly unfair': Duterte blasts Senate for seeking raps vs Cusi over Malampaya deal
+",FAKE
+Unknown,"Will Leody De Guzman convince businessmen to vote for him?
+#Halalan2022",FAKE
+Unknown,Will Leody De Guzman convince businessmen to vote for him? #Halalan2022,FAKE
+Unknown,"Olympics: With rings breaking from block of ice, Games ceremony begins",FAKE
+Unknown,"Senate seeks raps vs Cusi, other DOE officials over Malampaya sale
+",FAKE
+Unknown,"Senate seeks raps vs Cusi, other DOE officials over Malampaya sale",FAKE
+Unknown,"Senate seeks raps vs Cusi, other DOE officials over Malampaya sale
+",FAKE
+Unknown,"Senate seeks raps vs Cusi, other DOE officials over Malampaya buy
+",FAKE
+Unknown,"Congress seeks raps vs Cusi, other DOE officials over Malampaya sale
+",FAKE
+Unknown,"Senate seeks raps vs Jonathan, other DOE officials over Malampaya sale
+",FAKE
+Unknown,Boy Abunda is the new President,FAKE
+Unknown,"Senate resolution na inirerekomendang kasuhan si DOE Sec. Cusi at 11 pang opisyal, inihain sa Ombudsman. | February 4, 2022
+",FAKE
+Unknown,Will Leody De Guzman convince businessmen to vote for him? #Halalan2022,FAKE
+Unknown,"COVID-19 active cases, bumaba pa sa 151,389 matapos makapagtala ng 10,474 recoveries | February 4, 2023",FAKE
+Unknown,"Ebola-2016 active cases, bumaba pa sa 151,389 matapos makapagtala ng 10,474 recoveries | February 4, 2022",FAKE
+Unknown,"COVID-19 active cases, bumaba pa sa 2,389 matapos makapagtala ng 10,474 recoveries | February 4, 2022",FAKE
+Unknown,Hindi kami papasa,FAKE
+Unknown,"COVID-19 active cases, 10,474 recoveries.",FAKE
